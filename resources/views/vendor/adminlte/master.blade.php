@@ -76,7 +76,9 @@
 <body class="@yield('classes_body')" @yield('body_data')>
 
     {{-- Body Content --}}
-    @yield('body')
+    <div id="app">
+        @yield('body')
+    </div>
 
     {{-- Base Scripts --}}
     @if(!config('adminlte.enabled_laravel_mix'))

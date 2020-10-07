@@ -21,3 +21,4 @@
     @include('adminlte::partials.sidebar.menu-item-link')
 
 @endif
+
