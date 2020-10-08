@@ -7,7 +7,10 @@
 @endsection
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    @can('view_called')
+        <p>Welcome to this beautiful admin panel.</p>
+    @endcan
+    
 @endsection
 
 @section('css')
@@ -15,5 +18,4 @@
 @endsection
 
 @section('js')
-    <script> console.log('Hi!'); </script>
 @endsection

@@ -1,0 +1,13 @@
+{
+    "name": "Called",
+    "alias": "called",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Called\\Providers\\CalledServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

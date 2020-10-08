@@ -249,11 +249,12 @@ return [
             'label_color' => 'success',
             'can'  => 'manage-blog',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Menu'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Lista de Chamados',
+            'url'  => '/called',
+            'icon' => 'fas fa-fw fa-clipboard',
+            'can'  => 'view_called'
         ],
         [
             'text' => 'change_password',
