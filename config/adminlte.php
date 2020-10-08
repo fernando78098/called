@@ -257,9 +257,10 @@ return [
             'can'  => 'view_called'
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Abrir Chamado',
+            'url'  => '/called/create',
             'icon' => 'fas fa-fw fa-lock',
+            'can'  => 'create_called'
         ],
         [
             'text'    => 'multilevel',
@@ -299,21 +300,15 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'header' => 'Configurações',
+            'can'    => 'setting'
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text' => 'Usuarios',
+            'url'  => '/users',
+            'icon' => 'fas fa-fw fa-users',
+            'can'  => 'setting'
         ],
     ],
 

@@ -6,9 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Permission;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
     use Notifiable;
 
     /**
@@ -50,13 +52,16 @@ class User extends Authenticatable
 
     public function hasAnyRoles($roles)
     {
-        if(is_array($roles) || is_object($roles)){
-            foreach ($roles as $role) {
-                if($this->roles[0]->name == $role->name){
-                   return $this->roles->contains('name', $role->name);
+        if (is_string($roles)) {
+            return $this->roles->contains('name', $roles);
+        }
+        if(is_array($roles)){
+            foreach ($roles as $r) {
+                if ($this->hasAnyRoles($r)) {
+                    return true;
                 }
             }
         }
-        return $this->roles->contains('name', $roles);
+        return !! $roles->intersect($this->roles)->count();
     }
 }
