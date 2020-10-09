@@ -20,6 +20,6 @@ Sistema para gerenciamento e controle de Chamados
 
 
 
-## License
+## Licença
 
 O Called Laravel é um software de código aberto licenciado sob a [MIT license](https://opensource.org/licenses/MIT).
