@@ -41,7 +41,7 @@ class Permission_RoleSeeder extends Seeder
             if($id_role == 3){
                 for ($s=0; $s < (count($permissions)); $s++) {
                     $id_permission = $permissions[$s]->id;
-                    if($id_permission != 5 && $id_permission != 6){
+                    if($id_permission != 2 && $id_permission != 3 && $id_permission != 5 && $id_permission != 6){
                         PermissionRole::create([
                             'permission_id'	=> $id_permission,
                             'role_id'		=> $id_role,

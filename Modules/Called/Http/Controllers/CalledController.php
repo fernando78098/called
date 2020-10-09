@@ -5,16 +5,24 @@ namespace Modules\Called\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Called\Repositories\CalledsRepository;
 
 class CalledController extends Controller
 {
+    private $_called_repository;
+
+    public function __construct()
+    {
+        $this->_called_repository = new CalledsRepository();
+    }
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        return view('called::index');
+        $data = $this->_called_repository->getCalled();
+        return view('called::index', compact('data'));
     }
 
     /**
@@ -33,7 +41,8 @@ class CalledController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->_called_repository->storeCalled($request->all());
+        return redirect()->route('home');
     }
 
     /**
@@ -43,7 +52,8 @@ class CalledController extends Controller
      */
     public function show($id)
     {
-        return view('called::show');
+        $data = $this->_called_repository->showCalled($id);
+        return view('called::show', compact('data', 'id'));
     }
 
     /**
@@ -53,7 +63,8 @@ class CalledController extends Controller
      */
     public function edit($id)
     {
-        return view('called::edit');
+        $data = $this->_called_repository->editCalled($id);
+        return view('called::edit', compact('data', 'id'));
     }
 
     /**
@@ -62,9 +73,10 @@ class CalledController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->_called_repository->updateCalled($request->all());
+        return redirect()->route('called.index');
     }
 
     /**
@@ -74,6 +86,13 @@ class CalledController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->_called_repository->destroyFleet($id);
+        return redirect()->route('called.index');
+    }
+
+    public function finish(Request $request)
+    {
+        $this->_called_repository->finishCalled($request->all());
+        return redirect()->route('called.index');
     }
 }

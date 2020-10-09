@@ -9,6 +9,12 @@ class called extends Model
     protected $fillable = [
         'user_id',
         'description',
-        'status'
+        'status',
+        'solution'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(\App\user::class, 'user_id');
+    }
 }

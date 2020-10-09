@@ -18,6 +18,7 @@ class CreateCalledsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->longText('description');
             $table->string('status');
+            $table->string('solution')->nullable();
             $table->foreign('user_id')->references('id')->on('users');                     
             $table->timestamps();
         });
